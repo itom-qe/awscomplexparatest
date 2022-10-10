@@ -1,7 +1,7 @@
 variable "ami" {
   default = {
     ami1 : "ami-0022c770"
-    "ami2" = "ami-0022f774911c1d690"
+    "ami2" = "ami-0ec6517f6edbf8044"
   }
   type    = map
 }
@@ -51,7 +51,7 @@ variable "listType" {
            ]
  description = "Instance types for the EC2 instance"
  /*
-	multiline 
+	multiline
 	* comment
  */
 }
@@ -68,9 +68,9 @@ variable "subnetTuple" {
  commment
  */
  default = [false, true,{
-   name : "vpc-0163eb001426736ac"
+   name : "))Comp(lexVarVPCTest)()"
    //commment .......,
-   name  : "))((cpgtestsubnet))(",
+   env  : "Dev",
    isAvailable : true
  }]
  description = "Subnet ID for network interface"
@@ -86,8 +86,8 @@ variable "mapvar" {
   description = "mapppp type"
 }
 
- 
- 
+
+
 variable "objectVar" {
  default = {
    name = "My Vm Instance"
