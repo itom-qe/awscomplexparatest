@@ -2,14 +2,20 @@ provider "aws" {
   access_key          = "${var.access_key}"
   secret_key          = "${var.secret_key}"
   region              = "${var.region}"
-  #version             = ">= 3.0"
+}
+
+resource "aws_vpc" "default" {
+	cidr_block = "10.0.0.0/26"
+	tags = {
+		Name = var.subnetTuple[2]["name"]
+	}
 }
 
 resource "aws_subnet" "subnetByTFE" {
-  vpc_id      = var.subnetTuple[2]["name"]
-  cidr_block  = "10.0.16.0/24"
+  vpc_id                  = aws_vpc.default.id
+  cidr_block              = "10.0.0.0/26"
   tags = {
-    Name = var.subnetTuple[2]["name"]
+    environment = var.subnetTuple[2]["env"]
   }
 }
 
@@ -26,7 +32,7 @@ resource "aws_instance" "ec2ByTFOtest" {
   instance_type = "${var.instance_type[1]["type2"]}"
   tags = var.objectVar
   #name = var.objectVar["name"]
- 
+
   network_interface {
     network_interface_id = "${aws_network_interface.nicByTFO.id}"
     device_index         = var.numberType
