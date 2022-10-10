@@ -90,7 +90,7 @@ variable "mapvar" {
 
 variable "objectVar" {
  default = {
-   name = "My Vm Instance"
+   name = "))((testvmterraform(()("
    //commment .......,
    env  = "Dev",
    isAvailable = true
